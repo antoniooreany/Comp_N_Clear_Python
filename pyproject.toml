@@ -1,0 +1,30 @@
+[tool.black]
+line-length = 88
+target-version = ['py310', 'py311', 'py312']
+include = '\.pyi?$'
+exclude = '''
+/(
+  \.eggs
+| \.git
+| \.hg
+| \.mypy_cache
+| \.tox
+| \.venv
+| build
+| dist
+)/
+'''
+
+[tool.ruff]
+# Ruff configuration
+line-length = 88
+# Target the newest CI version so checks are compatible with 3.10-3.12
+target-version = "py312"
+# Basic rule set: enable common error/warning classes; you can extend or narrow this later.
+select = ["E", "F", "W", "C", "B"]
+# Allow Ruff to also act as a formatter where appropriate (pre-commit uses --fix)
+fix = true
+
+[tool.ruff.per-file-ignores]
+# Allow common exports in __init__ without flake-style complaints
+"**/__init__.py" = ["F401"]
